@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.4"?>
+<plugin>
+
+   <extension
+         point="org.eclipse.ui.views">
+      <category
+            name="ECNO Inspection Tool"
+            id="dk.dtu.imm.se.ecno.inspectiontool">
+      </category>
+      <view
+            name="Situation View"
+            icon="icons/sample.gif"
+            category="dk.dtu.imm.se.ecno.inspectiontool"
+            class="dk.dtu.debugger.ecno.views.GraphView"
+            id="dk.dtu.imm.se.ecno.inspectiontool.views.View">
+      </view>
+      <view
+     		name="Filters"
+            category="dk.dtu.imm.se.ecno.inspectiontool"
+            class="dk.dtu.debugger.ecno.views.FilterView"
+            icon="icons/sample.gif"
+            id="dk.dtu.imm.se.ecno.inspectiontool.views.PropertiesView"
+            restorable="true">
+      </view>
+      <view
+      		name="Overview"
+            category="dk.dtu.imm.se.ecno.inspectiontool"
+            class="dk.dtu.debugger.ecno.views.OverviewView"
+            icon="icons/sample.gif"
+            id="dk.dtu.imm.se.ecno.inspectiontool.views.InteractionView"   
+            restorable="true">
+      </view>
+      <view
+      		name="Debug Manager"
+            category="dk.dtu.imm.se.ecno.inspectiontool"
+            class="dk.dtu.debugger.ecno.views.DebuggerView"
+            icon="icons/sample.gif"
+            id="dk.dtu.imm.se.ecno.inspectiontool.views.DebuggerView"
+            restorable="true">
+      </view>
+   </extension>
+   <extension
+         point="org.eclipse.ui.perspectiveExtensions">
+      <perspectiveExtension
+            targetID="org.eclipse.jdt.ui.JavaPerspective">
+         <view
+               ratio="0.5"
+               relative="org.eclipse.ui.views.ProblemView"
+               relationship="right"
+               id="dk.dtu.imm.se.ecno.inspectiontool.views.View">
+         </view>
+      </perspectiveExtension>
+   </extension>
+   <!--
+   <extension
+         point="org.eclipse.help.contexts">
+      <contexts
+            file="contexts.xml">
+      </contexts>
+   </extension>
+   -->
+   
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            locationURI="popup:dk.dtu.imm.se.ecno.inspectiontool.views.View">
+         <menu
+               label="Select layout">
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout"
+                  id="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout.layouts.spring"
+                  label="Spring Layout"
+                  style="radio">
+                  
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="SPRING">
+               </parameter>
+               
+            </command>
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout"
+                  id="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout.layouts.grid"
+                  label="Grid"
+                  style="radio">
+            
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="GRID">
+               </parameter>
+              
+            </command>
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout"
+                  id="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout.layouts.horizontalTree"
+                  label="Horizontal Tree"
+                  style="radio">
+                  
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="HORIZONTAL_TREE">
+               </parameter>
+               
+            </command>
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout"
+                  id="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout.layouts.radial"
+                  label="Radial"
+                  style="radio">
+                  
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="RADIAL">
+               </parameter>
+               
+            </command>
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout"
+                  id="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout.layouts.tree"
+                  label="Tree"
+                  style="radio">
+                 
+               <parameter
+                     name="org.eclipse.ui.commands.radioStateParameter"
+                     value="TREE">
+               </parameter>
+             
+            </command>
+         </menu>
+       
+       <menu label="show">
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.show.encountered"
+                  label="Show Encountered Elements"
+                  style="toggle">   
+            </command>
+            <command
+                  commandId="dk.dtu.imm.se.ecno.inspectiontool.commands.show.added"
+                  label="Show Added Elements"
+                  style="toggle">   
+            </command>
+		</menu>
+      </menuContribution>
+   </extension>
+   
+   <!-- default values -->
+   <extension
+         point="org.eclipse.ui.commands">
+         <!-- define command and set default for show encountered elements check button -->
+      <command
+            defaultHandler="dk.dtu.debugger.ecno.commands.ShowEncounteredElementsCmd"
+            id="dk.dtu.imm.se.ecno.inspectiontool.commands.show.encountered"
+            name="show encountered elements">
+         <state
+         class="org.eclipse.ui.handlers.RegistryToggleState:false"
+         id="org.eclipse.ui.commands.toggleState">
+   		 </state>
+      </command>
+      <!-- define command and set default for show added elements check button -->
+      <command
+            defaultHandler="dk.dtu.debugger.ecno.commands.ShowAddedElementsCmd"
+            id="dk.dtu.imm.se.ecno.inspectiontool.commands.show.added"
+            name="show encountered elements">
+         <state
+         class="org.eclipse.ui.handlers.RegistryToggleState:true"
+         id="org.eclipse.ui.commands.toggleState">
+   		 </state>
+      </command>
+           
+   </extension>
+   <extension point="org.eclipse.ui.commands">
+    <!-- set default layout as the selected -->
+      <command
+            defaultHandler="dk.dtu.debugger.ecno.commands.ChangeLayout"
+            id="dk.dtu.imm.se.ecno.inspectiontool.commands.changeLayout"
+            name="Unique name1">
+         <commandParameter
+               id="org.eclipse.ui.commands.radioStateParameter"
+               name="Unique name2"
+               optional="false">
+         </commandParameter>
+         <state class="org.eclipse.ui.handlers.RadioState:TREE"
+         		id="org.eclipse.ui.commands.RadioState">
+         </state>  		
+		<state id="org.eclipse.ui.commands.radioState"> 
+			<class 
+			class="org.eclipse.ui.handlers.RadioState"> 
+				<parameter 
+				name="default" 
+				value="TREE"> 
+				</parameter> 
+				<parameter
+				name="persisted"
+				value="true">
+				</parameter>
+			</class> 
+		</state>
+      </command>
+   </extension>
+
+</plugin>
