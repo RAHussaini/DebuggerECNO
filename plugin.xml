@@ -5,12 +5,12 @@
    <extension
          point="org.eclipse.ui.views">
       <category
-            name="ECNO Inspection Tool"
+            name="ECNO Debugger"
             id="dk.dtu.imm.se.ecno.inspectiontool">
       </category>
       <view
-            name="Situation View"
-            icon="icons/sample.gif"
+            name="Debug"
+            icon="icons/debug.png"
             category="dk.dtu.imm.se.ecno.inspectiontool"
             class="dk.dtu.debugger.ecno.views.GraphView"
             id="dk.dtu.imm.se.ecno.inspectiontool.views.View">
@@ -32,10 +32,10 @@
             restorable="true">
       </view>
       <view
-      		name="Debug Manager"
+      		name="Breakpoints"
             category="dk.dtu.imm.se.ecno.inspectiontool"
             class="dk.dtu.debugger.ecno.views.DebuggerView"
-            icon="icons/sample.gif"
+            icon="icons/breakpoint.png"
             id="dk.dtu.imm.se.ecno.inspectiontool.views.DebuggerView"
             restorable="true">
       </view>
