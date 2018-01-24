@@ -52,7 +52,7 @@ import dk.dtu.debugger.ecno.utils.HideEncounteredElementsFilter;
 import dk.dtu.debugger.ecno.utils.HideEventsFilter;
 
 
-public class GraphView extends ViewPart 
+public class DebugView extends ViewPart 
 implements IZoomableWorkbenchPart, 
 ISelectionChangedListener, 
 GraphItemListener,
@@ -77,13 +77,13 @@ InteractionListener{
 	private HideEncounteredElementsFilter hideEncounteredElementsFilter;
 	private HideEncounteredElementsFilter hideAddedElementsFilter;
 	private HideEventsFilter hideEventsFilter;
-	private static List<ViewPartListener<GraphView>> viewPartListeners = new ArrayList<>();
+	private static List<ViewPartListener<DebugView>> viewPartListeners = new ArrayList<>();
 
 	public enum LayoutType {
 		SPRING, GRID, HORIZONTAL_TREE, RADIAL, TREE
 	}
 
-	public GraphView(){		
+	public DebugView(){		
 		
 		// standard filters
 		//		hideEncounteredElementsFilter = new HideEncounteredElementsFilter(addedElements, encounteredElements);
@@ -137,15 +137,15 @@ InteractionListener{
 		getSite().setSelectionProvider(viewer);
 		showEncounteredElements(false);
 
-		for(ViewPartListener<GraphView> l : viewPartListeners) l.viewPartAdded(this);
+		for(ViewPartListener<DebugView> l : viewPartListeners) l.viewPartAdded(this);
 
 	}
 
-	public static void addViewPartListener(ViewPartListener<GraphView> part){
+	public static void addViewPartListener(ViewPartListener<DebugView> part){
 		if(!viewPartListeners.contains(part))viewPartListeners.add(part);
 	}
 
-	public static void removeViewPartListener(ViewPartListener<GraphView> part){
+	public static void removeViewPartListener(ViewPartListener<DebugView> part){
 		viewPartListeners.remove(part);
 	}
 

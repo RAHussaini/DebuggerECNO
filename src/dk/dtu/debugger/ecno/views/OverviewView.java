@@ -253,12 +253,12 @@ public class OverviewView extends ViewPart implements SelectionListener, Interac
 
 
 
-	private GraphView getGraphView(){
+	private DebugView getGraphView(){
 		IViewPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.findView(GraphView.ID);
-		if (part != null && part instanceof GraphView) {
-			GraphView graphView = (GraphView) part;		
-			return graphView;
+				.findView(DebugView.ID);
+		if (part != null && part instanceof DebugView) {
+			DebugView debugView = (DebugView) part;		
+			return debugView;
 		}
 		return null;
 	}

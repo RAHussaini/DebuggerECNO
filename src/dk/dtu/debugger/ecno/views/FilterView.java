@@ -59,7 +59,7 @@ IRemoveControlListener{
 	public static final String ID = "dk.dtu.debugger.ecno.figures.FilterView";
 	private ScrolledComposite filterScroll;
 	private Composite filterContainer;
-	private ViewPartListener<GraphView> graphViewListener;
+	private ViewPartListener<DebugView> graphViewListener;
 	private ComboExt<IEventType> eventTypes;
 	private ComboExt<IElementType> elementTypes;
 	private static List<FilterViewModel> filters = new ArrayList<>();
@@ -71,13 +71,13 @@ IRemoveControlListener{
 	 */
 	public FilterView() {
 		// will be notified when graphView is available
-		graphViewListener = new ViewPartListener<GraphView>() {
+		graphViewListener = new ViewPartListener<DebugView>() {
 			@Override
-			public void viewPartAdded(GraphView part) {
+			public void viewPartAdded(DebugView part) {
 				updateFilters(part);
 			}
 		};
-		GraphView.addViewPartListener(graphViewListener);
+		DebugView.addViewPartListener(graphViewListener);
 	}
 
 	/**
@@ -148,7 +148,7 @@ IRemoveControlListener{
 
 			@Override
 			public void widgetSelected(SelectionEvent e) {
-				GraphView view = getGraphView();
+				DebugView view = getGraphView();
 				if(view != null) view.update(true);
 			}
 
@@ -168,24 +168,24 @@ IRemoveControlListener{
 	 * while graphView was not available.
 	 * @return
 	 */
-	private GraphView getGraphView(){
+	private DebugView getGraphView(){
 		IViewPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-				.findView(GraphView.ID);
+				.findView(DebugView.ID);
 
-		if (part != null && part instanceof GraphView) {
-			GraphView graphView = (GraphView) part;
+		if (part != null && part instanceof DebugView) {
+			DebugView debugView = (DebugView) part;
 			if(isDirty){
-				updateFilters(graphView);
+				updateFilters(debugView);
 				isDirty = false;
 			}
 			
-			return graphView;
+			return debugView;
 		}
 		isDirty = true;
 		return null;
 	}
 
-	private void updateFilters(GraphView view){
+	private void updateFilters(DebugView view){
 		if(view == null) return;
 		view.setFilters(filters.toArray(new ViewerFilter[0]));
 	}
@@ -204,7 +204,7 @@ IRemoveControlListener{
 						elementType);
 
 				filters.add(breakpoint);
-				GraphView view = getGraphView();
+				DebugView view = getGraphView();
 				if(view != null) view.addFilter(breakpoint);
 				updateScrollSize();
 			}
@@ -257,14 +257,14 @@ IRemoveControlListener{
 	public void dispose() {
 		InspectionToolEngineController.getInstance().removeElementTypeListener(this);
 		InspectionToolEngineController.getInstance().removeEventTypeListener(this);
-		GraphView.removeViewPartListener(graphViewListener);
+		DebugView.removeViewPartListener(graphViewListener);
 		super.dispose();
 	}
 
 	@Override
 	public void removeControl(Object control) {
 		filters.remove(control);
-		GraphView view = getGraphView();
+		DebugView view = getGraphView();
 		if(view != null)view.removeFilter((ViewerFilter) control);
 
 		updateScrollSize();

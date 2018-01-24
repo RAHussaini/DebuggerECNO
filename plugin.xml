@@ -12,7 +12,7 @@
             name="Debug"
             icon="icons/debug.png"
             category="dk.dtu.imm.se.ecno.inspectiontool"
-            class="dk.dtu.debugger.ecno.views.GraphView"
+            class="dk.dtu.debugger.ecno.views.DebugView"
             id="dk.dtu.imm.se.ecno.inspectiontool.views.View">
       </view>
       <view
@@ -34,7 +34,7 @@
       <view
       		name="Breakpoints"
             category="dk.dtu.imm.se.ecno.inspectiontool"
-            class="dk.dtu.debugger.ecno.views.DebuggerView"
+            class="dk.dtu.debugger.ecno.views.BreakpointView"
             icon="icons/breakpoint.png"
             id="dk.dtu.imm.se.ecno.inspectiontool.views.DebuggerView"
             restorable="true">

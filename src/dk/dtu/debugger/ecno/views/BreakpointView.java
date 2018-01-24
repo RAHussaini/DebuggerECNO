@@ -45,7 +45,7 @@ import dk.dtu.imm.se.ecno.core.IEventType;
 import dk.dtu.imm.se.ecno.model.ecno.impl.EventTypeImpl;
 import dk.dtu.imm.se.ecno.runtime.Interaction;
 
-public class DebuggerView  extends ViewPart 
+public class BreakpointView  extends ViewPart 
 	implements SelectionListener, 
 	IEventTypeListener, 
 	IElementTypeListener,
@@ -175,8 +175,8 @@ public class DebuggerView  extends ViewPart
 				ElementViewModel element = interactionElements.getSelectedValue();
 				IEventType eventType = interactionEventTypes.getSelectedValue();
 				List<Interaction> interactions = InspectionToolEngineController.getInstance().getInteractions(element, eventType);
-				DebuggerView.this.interactions.clear();
-				DebuggerView.this.interactions.addAll(interactions);
+				BreakpointView.this.interactions.clear();
+				BreakpointView.this.interactions.addAll(interactions);
 				interactionList.refresh();
 //				interactions.get(0).getTriggerEvent().getParameter(interactions.get(0)..getType().getFormalParametersList().get(0)).getValue()
 //				interactions.get(0).getTriggerEvent().getParameter(interactions.get(0).getTriggerEvent().getType().getFormalParametersList().get(0)).getValue()
@@ -225,7 +225,7 @@ public class DebuggerView  extends ViewPart
 			@Override
 			public void run() {
 			
-				BreakpointViewModel breakpoint = new BreakpointViewModel(DebuggerView.this,
+				BreakpointViewModel breakpoint = new BreakpointViewModel(BreakpointView.this,
 						breakpointContainer, 
 						eventType, 
 						elementType, 

@@ -9,8 +9,8 @@ import org.eclipse.ui.commands.ICommandService;
 import org.eclipse.ui.handlers.HandlerUtil;
 import org.eclipse.ui.handlers.RadioState;
 
-import dk.dtu.debugger.ecno.views.GraphView;
-import dk.dtu.debugger.ecno.views.GraphView.LayoutType;
+import dk.dtu.debugger.ecno.views.DebugView;
+import dk.dtu.debugger.ecno.views.DebugView.LayoutType;
 
 public class ChangeLayout extends AbstractHandler {
 
@@ -28,9 +28,9 @@ public class ChangeLayout extends AbstractHandler {
 		LayoutType type = LayoutType.valueOf(currentValue);
 		if(type != null){
 			IViewPart part = PlatformUI.getWorkbench().getActiveWorkbenchWindow().getActivePage()
-					.findView(GraphView.ID);
-			if(part instanceof GraphView){
-				((GraphView) part).applyLayout(type);
+					.findView(DebugView.ID);
+			if(part instanceof DebugView){
+				((DebugView) part).applyLayout(type);
 			}
 
 		}
