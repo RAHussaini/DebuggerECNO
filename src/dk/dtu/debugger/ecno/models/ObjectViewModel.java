@@ -25,6 +25,7 @@ public abstract class ObjectViewModel implements Shapeable, IWorkbenchAdapter,IA
 		for(int i = 0; i < size; i++){
 			Object element = obj.getClass().getMethod("get", new Class[]{int.class}).invoke(obj, i);
 			listName += element.getClass().getMethod("getName").invoke(element) + ";";
+			//listName += obj.getClass().getMethod("getName").invoke(obj, i); //rus
 		}
 		return listName;
 	}
@@ -49,21 +50,36 @@ public abstract class ObjectViewModel implements Shapeable, IWorkbenchAdapter,IA
 	public void highlight(boolean highlight){
 		if(this.getShape() == null) {
 			System.err.println("shape is null for: " + this.getName());
+			
 			return;
 		}
-		if(highlight)getShape().highlight();
-		else getShape().unHighlight();
-		this.highlight = highlight;
+//		if(highlight)
+//		getShape().highlight();
+//		else getShape().unHighlight();
+//		this.highlight = highlight;
+		
+		
 	}
 	
 	public boolean isHighlighted(){
+		
+	
+
+//		if(highlight =true) {
+//			System.err.println("Selected object highlighted");  // rus
+//		}
 		return this.highlight;
 	}
 
 	@Override
 	public EFigure getShape() {
-		if(this.shape == null) System.err.println("shape is null: " + name);
+		if(this.shape == null) 
+			System.err.println("shape is null: " + name);
+			
+		
 		return this.shape;
+
+	
 	}
 
 	@Override

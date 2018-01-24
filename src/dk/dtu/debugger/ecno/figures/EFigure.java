@@ -1,6 +1,7 @@
 package dk.dtu.debugger.ecno.figures;
 
 import org.eclipse.draw2d.Border;
+import org.eclipse.draw2d.FigureUtilities;
 import org.eclipse.draw2d.Shape;
 import org.eclipse.draw2d.geometry.Dimension;
 import org.eclipse.draw2d.geometry.Rectangle;
@@ -8,15 +9,19 @@ import org.eclipse.swt.graphics.Color;
 
 public abstract class EFigure extends Shape{
 	
-	private Color backgroundHighlightColor = new Color(null, 255,255,0);
+	
+	
+	private Color backgroundHighlightColor = new Color(null, 255,255,0); // (RGB) = (red, green, blue)
 	private Color backgroundColor = new Color(null, 220,220,220);
 	
 	public EFigure(){
 		setBackgroundColor(backgroundColor);
 	}
 	public void highlight(){
-		System.err.println("highlighting...");
-		setBackgroundColor(backgroundHighlightColor);
+		
+		System.err.println(" highlighting...");  // old
+		setBackgroundColor(backgroundHighlightColor);	
+		
 		invalidate();
 		repaint();
 	}
@@ -60,6 +65,8 @@ public abstract class EFigure extends Shape{
 //		System.out.println("bounds: " + test);
 		return test;
 	}
+	
+	
 	
 	
 }

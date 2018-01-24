@@ -10,10 +10,12 @@ Require-Bundle: org.eclipse.ui,
  dk.dtu.imm.se.ecno.core,
  org.eclipse.core.resources,
  org.eclipse.emf.ecore,
- dk.dtu.imm.se.ecno.model
+ dk.dtu.imm.se.ecno.model,
+ org.eclipse.swt
 Bundle-RequiredExecutionEnvironment: JavaSE-1.7
 Bundle-ActivationPolicy: lazy
 Export-Package: dk.dtu.debugger.ecno.controllers,
  dk.dtu.debugger.ecno.listeners
-Import-Package: org.eclipse.ui.model,
+Import-Package: org.eclipse.emf.edit.provider,
+ org.eclipse.ui.model,
  org.eclipse.ui.views.properties

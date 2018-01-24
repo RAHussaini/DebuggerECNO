@@ -14,7 +14,8 @@ import org.eclipse.swt.graphics.FontData;
 public class ElementFigure extends EFigure {
 
 	/** The width and height radii applied to each corner. */
-	protected Dimension corner = new Dimension(15, 15);
+	protected Dimension corner = new Dimension(0, 0);  // rus
+	//protected Dimension corner = new Dimension(15, 15); 
 	private String text;
 	private int expandWidth = 20;
 	private int expandHeight = 10;
@@ -23,8 +24,7 @@ public class ElementFigure extends EFigure {
 	 */
 	public ElementFigure(String text) {
 		// TODO Auto-generated constructor stub() { 
-		super();
-		
+		super();		
 		this.text = text;
 		String[] fonts = GraphicsEnvironment.getLocalGraphicsEnvironment().getAvailableFontFamilyNames();
 		Font font = new Font(null, new FontData(fonts[0], 15, java.awt.Font.BOLD));
@@ -36,8 +36,7 @@ public class ElementFigure extends EFigure {
 		
 		font.dispose();
 
-	}
-	
+	}	
 	
 
 	/**
@@ -48,6 +47,7 @@ public class ElementFigure extends EFigure {
 
 		graphics.setBackgroundColor(getBackgroundColor());
 		graphics.fillRoundRectangle(getBounds(), corner.width, corner.height);
+		
 		Point p = getBounds().getLocation();
 		int height = getBounds().height-expandHeight;
 		graphics.setForegroundColor(getForegroundColor());
@@ -70,6 +70,8 @@ public class ElementFigure extends EFigure {
 		//	getLineWidth()
 		//	System.out.println(f.x + "," + f.y + ";" + f.width + "," + f.height + ";" + corner.width + "," + corner.height);
 		graphics.drawRoundRectangle(f, corner.width, corner.height);
+		
+		
 	}
 
 	/**

@@ -95,5 +95,12 @@ public class ElementViewModel extends ObjectViewModel {
 		}
 		return null;
 	}
+	
+	
+//	public boolean isHighlighted() {
+//		if(){
+//			System.out.println("TESTed hight light"); //rus
+//		}
+//		return highlight;}
 
 }
