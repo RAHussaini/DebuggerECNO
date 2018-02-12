@@ -70,7 +70,7 @@ InteractionListener{
 
 	private boolean showEncounteredElements = false;
 
-	private volatile List<ObjectViewModel> elements = new ArrayList<>();
+	private volatile List<ObjectViewModel> elements = new ArrayList<>();  // show list of elements
 	private volatile List<ObjectViewModel> addedElements = new ArrayList<>();
 	private volatile List<ObjectViewModel> encounteredElements = new ArrayList<>();
 
@@ -414,7 +414,7 @@ InteractionListener{
 //				tempInteractionElements.add(interaction.getTriggerEvent());
 //
 //				elements.addAll(tempInteractionElements);
-				for(ObjectViewModel o : interaction.getElements()) addElement(o);
+				for(ObjectViewModel o : interaction.getElements()) addElement(o); //
 				for(ObjectViewModel o : interaction.getEvents()) addElement(o);
 //				elements.addAll(interaction.getElements());
 //				elements.addAll(interaction.getEvents());
@@ -439,6 +439,7 @@ InteractionListener{
 			System.err.println("Anton test: " + element.getNode() + ";" + element.hashCode() + ";");
 		}
 		System.out.println("contains?:" + this.elements.contains(element) + ";" + element);
+		//System.out.println(this.elements.contains(element) + ";" + element); // rus
 		if(!this.elements.contains(element)){
 			this.elements.add(element);
 		}
